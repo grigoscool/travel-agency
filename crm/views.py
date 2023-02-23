@@ -2,13 +2,12 @@ from django.shortcuts import render
 
 from .models import Order
 from .forms import OrderForm
+from cms.models import CmsSlider
 
 
 def index(request):
-    orders = Order.objects.all()
-    form = OrderForm()
-    return render(request, 'index.html', {'orders': orders,
-                                              'form': form})
+    slider_list = CmsSlider.objects.all()
+    return render(request, 'index.html', {'slider_list': slider_list})
 
 
 def thanks(request):
