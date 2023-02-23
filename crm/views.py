@@ -7,7 +7,7 @@ from .forms import OrderForm
 def index(request):
     orders = Order.objects.all()
     form = OrderForm()
-    return render(request, 'crm/index.html', {'orders': orders,
+    return render(request, 'index.html', {'orders': orders,
                                               'form': form})
 
 
@@ -21,4 +21,4 @@ def thanks(request):
         'phone': phone,
         'item': item,
     }
-    return render(request, 'crm/thanks.html', context)
+    return render(request, 'thanks.html', context)
