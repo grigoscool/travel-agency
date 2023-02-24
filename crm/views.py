@@ -4,7 +4,7 @@ from .models import Order
 from cms.models import CmsSlider
 from price.models import PriceCard, PriceTable
 from .forms import OrderForm
-
+from telegrambot.sendmessage import send_telegram_message
 
 def index(request):
     slider_list = CmsSlider.objects.all()
@@ -30,6 +30,8 @@ def thanks(request):
     name = request.POST['name']
     phone = request.POST['phone']
     item = Order.objects.create(order_name=name, order_phone=phone)
+
+    send_telegram_message()
 
     context = {
         'name': name,

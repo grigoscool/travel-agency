@@ -21,6 +21,8 @@ INSTALLED_APPS = [
     'crm.apps.CrmConfig',
     'cms.apps.CmsConfig',
     'price.apps.PriceConfig',
+    'telegrambot.apps.TelegrambotConfig',
+
 ]
 
 MIDDLEWARE = [
