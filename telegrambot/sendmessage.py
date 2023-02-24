@@ -1,22 +1,24 @@
 import requests
+import sys
+sys.path.append('.')
 
 from .models import TelegramSettings
 
 
-def send_telegram_message():
+def send_telegram_message(tg_name, tg_phone):
     """
     Send order mail
     :return: None
     """
-    settings = TelegramSettings.objects.get(pk=1)
-
-    token = str(settings.tg_token)
-    chat_id = str(settings.tg_chat)
-    msg = str(settings.tg_message)
+    setting = TelegramSettings.objects.get(pk=1)
+    token = str(setting.tg_token)
+    chat_id = str(setting.tg_chat)
+    msg = f'{str(setting.tg_message)} \n имя: {tg_name} \n телефон: {tg_phone}'
 
     api = 'https://api.telegram.org/bot'
-    send_msg = api + token + '/sendMessage'
-    req = requests.post(send_msg, data={'chat_id': chat_id, 'msg': msg})
+    method = '/sendMessage'
+    url = api + token + method
+    res = requests.post(url, data={'chat_id': chat_id, 'text': msg})
 
-send_telegram_message()
+
 

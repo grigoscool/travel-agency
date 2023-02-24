@@ -6,6 +6,7 @@ from price.models import PriceCard, PriceTable
 from .forms import OrderForm
 from telegrambot.sendmessage import send_telegram_message
 
+
 def index(request):
     slider_list = CmsSlider.objects.all()
     pc_1 = PriceCard.objects.get(pk=1)
@@ -31,7 +32,7 @@ def thanks(request):
     phone = request.POST['phone']
     item = Order.objects.create(order_name=name, order_phone=phone)
 
-    send_telegram_message()
+    send_telegram_message(tg_name=name, tg_phone=phone)
 
     context = {
         'name': name,
