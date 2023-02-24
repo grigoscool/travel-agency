@@ -3,10 +3,17 @@
 {% block thanks %}
 	<!-- Спасибо -->
   	<section>
+		  {% if name %}
   		<div class="container">
   			<CENTER style = 'margin-top: 35%; margin-bottom: 35%;'><h1>{{ name }}, cпасибо за заявку!</h1></CENTER>
   		</div>
-  	</section>
+		  {% else %}
+  		<div class="container">
+  			<CENTER style = 'margin-top: 35%; margin-bottom: 35%;'><h1>Спасибо страничка</h1></CENTER>
+  		</div>
+  	  {% endif %}
+	  </section>
+
   	<!-- Спасибо -->
 {% endblock %}
 

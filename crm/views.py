@@ -28,15 +28,18 @@ def index(request):
 
 
 def thanks(request):
-    name = request.POST['name']
-    phone = request.POST['phone']
-    item = Order.objects.create(order_name=name, order_phone=phone)
+    if request.POST:
+        name = request.POST['name']
+        phone = request.POST['phone']
+        item = Order.objects.create(order_name=name, order_phone=phone)
 
-    send_telegram_message(tg_name=name, tg_phone=phone)
+        send_telegram_message(tg_name=name, tg_phone=phone)
 
-    context = {
-        'name': name,
-        'phone': phone,
-        'item': item,
-    }
-    return render(request, 'thanks.html', context)
+        context = {
+            'name': name,
+            'phone': phone,
+            'item': item,
+        }
+        return render(request, 'thanks.html', context)
+    else:
+        return render(request, 'thanks.html')
