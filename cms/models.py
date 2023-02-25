@@ -2,7 +2,7 @@ from django.db import models
 
 
 class CmsSlider(models.Model):
-    cms_img = models.ImageField(upload_to='sliderimage/')
+    cms_img = models.ImageField(upload_to='sliderimage/', verbose_name='Url картинки')
     cms_title = models.CharField(max_length=200, verbose_name='Заголовок')
     cms_text = models.CharField(max_length=255, verbose_name='Текст')
     cms_css = models.CharField(
