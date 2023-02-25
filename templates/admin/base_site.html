@@ -1,0 +1,38 @@
+{% extends "admin/base.html" %}
+{% load static %}
+<link href="{% static 'external.css' %}" rel="stylesheet">
+{% block extrastyle %}
+<style>
+body {
+  background: #e1bce7;
+}
+
+h1 {
+  color: #a12828;
+}
+
+a:link, a:visited {
+  color: #272b93;
+}
+
+#site-name {
+  float: right;
+}
+
+#branding {
+  width: 90%;
+}
+</style>
+{% endblock %}
+{% block title %}{% if subtitle %}{{ subtitle }} | {% endif %}{{ title }} | {{ site_title|default:_('Django site admin') }}{% endblock %}
+
+{% block branding %}
+
+<a class="navbar-brand logo-top" href="#">
+  <img src="{% static 'img/Logo.png' %}" width="50" height="40" class=" d-inline-block align-top" alt="" loading="lazy">
+  The Best Tour Operator
+</a>
+<h1 id="site-name"><a href="{% url 'admin:index' %}">{{ site_header|default:_('Django administration') }}</a></h1>
+{% endblock %}
+
+{% block nav-global %}{% endblock %}
