@@ -1,10 +1,10 @@
 from django.shortcuts import render
 
-from .models import Order
 from cms.models import CmsSlider
-from price.models import PriceCard, PriceTable
-from .forms import OrderForm
+from price.models import PriceCard
 from telegrambot.sendmessage import send_telegram_message
+from .forms import OrderForm
+from .models import Order
 
 
 def index(request):
@@ -15,13 +15,11 @@ def index(request):
 
     form = OrderForm()
 
-    services = PriceTable.objects.all()
     context = {
         'slider_list': slider_list,
         'pc_1': pc_1,
         'pc_2': pc_2,
         'pc_3': pc_3,
-        'services': services,
         'form': form,
     }
     return render(request, 'index.html', context)
